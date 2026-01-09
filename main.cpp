@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QString>
 #include <QPixmap>
+#include <QVector>
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
@@ -19,6 +20,18 @@ int main(int argc, char *argv[]) {
     QString qsBlack = "background-color: rgba(10, 10, 10, 50%);";
     QString qsWhite = "background-color: rgba(210, 210, 210, 50%);";
     QPixmap pmQween = QPixmap(":/icons/programm/img/Qween24.png");
+
+    QVector<int> qvData = QVector<int>();
+    qvData.clear();
+    qvData.append(1);//0
+    qvData.append(1);//1
+    qvData.append(1);//2
+    qvData.append(1);//3
+    qvData.append(1);//4
+    qvData.append(1);//5
+    qvData.append(1);//6
+    qvData.append(1);//7
+
     // Создаем виджеты
 
     // Добавляем виджеты в сетку с указанием позиций (строка, столбец)
@@ -26,8 +39,10 @@ int main(int argc, char *argv[]) {
     {
         for(int i = 0; i < 8; i++)
         {
+            //Создание ячейки
             QLabel * CellLabel = new QLabel();
             CellLabel->setAlignment(Qt::AlignCenter);
+            //Чередование чёрных и белых полей
             if(i % 2)
             {
                 if(j % 2)
@@ -50,15 +65,12 @@ int main(int argc, char *argv[]) {
                     CellLabel->setStyleSheet(qsBlack);
                 }
             }
-            gridLayout->addWidget(CellLabel, i, j);    // строка 0, столбец
-            if((i == 2) && (j == 2))CellLabel->setPixmap(pmQween);
+            //Рисование ферзя в ячейке
+            if(qvData[i] == j)CellLabel->setPixmap(pmQween);
+            //Рисование ячейки на виджете
+            gridLayout->addWidget(CellLabel, i, j);
         }
     }
-
-    // Настройка отступов
-//    gridLayout->setHorizontalSpacing(10); // горизонтальный отступ между ячейками
-//    gridLayout->setVerticalSpacing(15);   // вертикальный отступ между ячейками
-//    gridLayout->setContentsMargins(20, 20, 20, 20); // отступы от краев (лево, верх, право, низ)
 
     window.show();
     return app.exec();
