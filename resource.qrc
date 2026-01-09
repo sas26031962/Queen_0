@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>programm/img/Qween24.png</file>
+    </qresource>
+</RCC>

@@ -4,6 +4,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QString>
+#include <QPixmap>
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
@@ -17,6 +18,7 @@ int main(int argc, char *argv[]) {
     QGridLayout *gridLayout = new QGridLayout(&window);
     QString qsBlack = "background-color: rgba(10, 10, 10, 50%);";
     QString qsWhite = "background-color: rgba(210, 210, 210, 50%);";
+    QPixmap pmQween = QPixmap(":/icons/programm/img/Qween24.png");
     // Создаем виджеты
 
     // Добавляем виджеты в сетку с указанием позиций (строка, столбец)
@@ -25,6 +27,7 @@ int main(int argc, char *argv[]) {
         for(int i = 0; i < 8; i++)
         {
             QLabel * CellLabel = new QLabel();
+            CellLabel->setAlignment(Qt::AlignCenter);
             if(i % 2)
             {
                 if(j % 2)
@@ -47,7 +50,8 @@ int main(int argc, char *argv[]) {
                     CellLabel->setStyleSheet(qsBlack);
                 }
             }
-            gridLayout->addWidget(CellLabel, i, j);    // строка 0, столбец i
+            gridLayout->addWidget(CellLabel, i, j);    // строка 0, столбец
+            if((i == 2) && (j == 2))CellLabel->setPixmap(pmQween);
         }
     }
 
