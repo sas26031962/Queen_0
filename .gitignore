@@ -1,2 +1,6 @@
 
 *.o
+
+programm/Makefile.Debug
+
+programm/Makefile.Release
