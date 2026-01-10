@@ -15,7 +15,8 @@ CONFIG += c++14
 
 SOURCES += main.cpp
 
-HEADERS  +=
+HEADERS  += \
+    fviewsolution.h
 
 RESOURCES += \
     resource.qrc
